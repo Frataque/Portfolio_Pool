@@ -1,0 +1,227 @@
+@font-face {
+    font-family: "Archivo Black", sans-serifsans-serif;
+    src: url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+    font-family: "SF Pro Display";
+    src: url('./fonts/SF-Pro-Display-Black.otf') format('otf'),
+}
+.dots {
+    display: inline-flex;
+    font-size: 2rem;
+}
+.dots span {
+    display: inline-block;
+    transform: translateY(0);        
+}
+#ttDot:hover .dots span {
+    animation-delay: 0.5s; 
+    animation: wave 1s ease-in-out infinite; 
+}
+#ttDot:hover .dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+#ttDot:hover .dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+#ttDot:hover .dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+@keyframes wave {
+    0%, 70% {
+        transform: translateY(0);
+    }
+    35% {
+        transform: translateY(-50vh);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+#inoutTT:hover {
+    color: #14213D;
+}
+#inoutTT:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    z-index: -1; 
+    transition: background-color 0.3s ease-in-out;
+}
+#part3{
+    transition: background-color 0.5s ease-in-out;
+}
+#part3:has(#inoutTT:hover) {
+    background-color: #fff;
+}
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+.title-container h1, .title-container .dots {
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 10vw;
+    margin: 0px;
+    padding-bottom: 0px;
+}
+#part2 main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin-top: 10vh;
+}
+#part2 main h1 {
+    margin-top: 10vh;
+}
+#ppIA{
+    height: auto;
+    width: 50vh;
+    margin-bottom: -2vh;
+    transition: 0.3s;
+    transform: translateY(0)
+}
+#ppIA:hover {
+    width: 700px;
+    transform: translateY(-5vh);
+}
+.bloque {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+h2 {
+    font-family: "Archivo Black";
+}
+body {
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
+    scroll-snap-type: y mandatory; 
+}
+.experiences-container, .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+.experience-card, .skill-card {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 1px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.experience-card:hover, .skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.experience-header h3, .skill-card h3 {
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 1.4rem;
+    color: #007bff;
+    margin: 0 0 10px;
+}
+.company, .date {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+}
+.date {
+    color: #888;
+}
+.experience-details, .skill-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.experience-details li, .skill-list li {
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    position: relative;
+}
+.experience-details li::before, .skill-list li::before {
+    content: "•";
+    color: #007bff;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+}
+.section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+.form-container {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.form-field label {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.9rem;
+}
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+.submit-btn {
+    align-self: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+@media (max-width: 768px) {
+    .section-content {
+        padding: 1rem 0.5rem;
+    }
+    .form-container {
+        padding: 1rem;
+    }
+}

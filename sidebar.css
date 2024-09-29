@@ -1,0 +1,196 @@
+:root {
+    --sidebar-width: 60px;
+    --sidebar-width-mobile: 40px;
+    --primary-color: #007bff;
+    --background-color: #f8f9fa;
+    --text-color: #6c757d;
+    --active-color: #007bff;
+}
+.timeline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--background-color);
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20vh 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 20vh;
+    bottom: 20vh;
+    left: 50%;
+    width: 2px;
+    background: var(--text-color);
+    transform: translateX(-50%);
+}
+.timeline-progress {
+    position: absolute;
+    top: 40px;
+    bottom: 40px;
+    left: 50%;
+    width: 2px;
+    background: var(--primary-color);
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+}
+.timeline-step {
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+.timeline-step::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: currentColor;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.timeline-step:hover,
+.timeline-step:target {
+    color: var(--active-color);
+}
+.timeline-step:hover::before,
+.timeline-step:target::before {
+    transform: scale(1.5);
+}
+.timeline-step .tooltip {
+    position: absolute;
+    left: 45px;
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: "SF Pro Display", sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+.timeline-step:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+@keyframes progress-animation {
+    0% { transform: translateX(-50%) scaleY(0); }
+    100% { transform: translateX(-50%) scaleY(1); }
+}
+.part {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+#part1:target ~ .timeline .timeline-progress { animation: progress-animation 0.5s forwards; }
+#part2:target ~ .timeline .timeline-progress { animation: progress-animation 0.5s forwards; transform-origin: top; transform: translateX(-50%) scaleY(0.14); }
+#part3:target ~ .timeline .timeline-progress { animation: progress-animation 0.5s forwards; transform-origin: top; transform: translateX(-50%) scaleY(0.28); }
+#part4:target ~ .timeline .timeline-progress { animation: progress-animation 0.5s forwards; transform-origin: top; transform: translateX(-50%) scaleY(0.43); }
+#part5:target ~ .timeline .timeline-progress { animation: progress-animation 0.5s forwards; transform-origin: top; transform: translateX(-50%) scaleY(0.56); }
+#part6:target ~ .timeline .timeline-progress { animation: progress-animation 0.5s forwards; transform-origin: top; transform: translateX(-50%) scaleY(0.70); }
+#part7:target ~ .timeline .timeline-progress { animation: progress-animation 0.5s forwards; transform-origin: top; transform: translateX(-50%) scaleY(0.84); }
+.container {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    transition: all 0.3s ease;
+}
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 50px;
+    }
+    .timeline-step {
+        width: 25px;
+        height: 25px;
+    }
+    .timeline-step::before {
+        width: 6px;
+        height: 6px;
+    }
+}
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: var(--sidebar-width-mobile);
+    }
+    .timeline {
+        padding: 10px 0;
+    }
+    .timeline-step {
+        width: 20px;
+        height: 20px;
+    }
+    .timeline-step::before {
+        width: 4px;
+        height: 4px;
+    }
+    .timeline-step .tooltip {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .timeline {
+        width: 100%;
+        height: var(--sidebar-width-mobile);
+        bottom: 0;
+        top: auto;
+        flex-direction: row;
+    }
+    .timeline::before {
+        top: 50%;
+        left: 40px;
+        right: 40px;
+        bottom: auto;
+        width: auto;
+        height: 2px;
+        transform: translateY(-50%);
+    }
+    .timeline-progress {
+        top: 50%;
+        left: 40px;
+        right: 40px;
+        bottom: auto;
+        width: auto;
+        height: 2px;
+        transform: translateY(-50%) scaleX(0);
+        transform-origin: left;
+    }
+    .container {
+        margin-left: 0;
+        margin-bottom: var(--sidebar-width-mobile);
+        width: 100%;
+    }
+    @keyframes progress-animation-mobile {
+        0% { transform: translateY(-50%) scaleX(0); }
+        100% { transform: translateY(-50%) scaleX(1); }
+    }
+    #part1:target ~ .timeline .timeline-progress,
+    #part2:target ~ .timeline .timeline-progress,
+    #part3:target ~ .timeline .timeline-progress,
+    #part4:target ~ .timeline .timeline-progress,
+    #part5:target ~ .timeline .timeline-progress,
+    #part6:target ~ .timeline .timeline-progress,
+    #part7:target ~ .timeline .timeline-progress {
+        animation: progress-animation-mobile 0.5s forwards;
+    }
+}
